@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package>
+  <name>hardware_drivers</name>
+  <version>0.1.0</version>
+  <description>Terabee hardware drivers</description>
+
+  <maintainer email="marcin.pilch@terabee.com">Marcin Pilch</maintainer>
+  
+  <license>MIT</license>
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>

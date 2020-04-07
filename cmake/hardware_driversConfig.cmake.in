@@ -1,0 +1,4 @@
+set(config_targets_file_serial_communication @config_targets_file_serial_communication@)
+include("${CMAKE_CURRENT_LIST_DIR}/${config_targets_file_serial_communication}")
+set(config_targets_file_follow_me_driver @config_targets_file_follow_me_driver@)
+include("${CMAKE_CURRENT_LIST_DIR}/${config_targets_file_follow_me_driver}")
