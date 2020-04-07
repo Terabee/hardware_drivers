@@ -16,6 +16,12 @@ struct PolarPoint2D
 class FollowMeMasterBeacon
 {
 public:
+  enum printout_mode
+  {
+    text = 1,
+    binary = 2
+  };
+
   enum rs485_parity
   {
     rs485_parity_none = 0,
