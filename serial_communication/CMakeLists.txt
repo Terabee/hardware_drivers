@@ -17,10 +17,24 @@ target_include_directories(${LIB_NAME} PUBLIC
   $<INSTALL_INTERFACE:include/>
 )
 
-install(DIRECTORY include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
-install(TARGETS ${LIB_NAME} EXPORT ${LIB_NAME} DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+set_target_properties(${LIB_NAME} PROPERTIES
+  VERSION ${PACKAGE_VERSION}
+)
+
+install(DIRECTORY include/
+  DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+  COMPONENT headers
+)
+
+install(TARGETS ${LIB_NAME}
+  EXPORT ${LIB_NAME}
+  DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+  COMPONENT libraries
+)
+
 install(EXPORT ${LIB_NAME}
   DESTINATION "${export_dest_dir}"
   NAMESPACE hardware_drivers::
   FILE ${config_targets_file_serial_communication}
+  COMPONENT configs
 )
