@@ -121,7 +121,7 @@ bool FollowMeMasterBeacon::setRS485_Parameters(uint8_t slave_id, uint32_t baudra
 
   std::array<uint8_t, 5> write_buffer_slave_id_ = { 0x00, 0x52, 0x03, 0x00, 0x00 };
   write_buffer_slave_id_.at(3) = slave_id;
-  write_buffer_slave_id_.at(4) = helper_lib::crc8(write_buffer_.data(), 4);
+  write_buffer_slave_id_.at(4) = helper_lib::crc8(write_buffer_slave_id_.data(), 4);
 
   if (!writeCommandCheckACK(write_buffer_slave_id_.data()))
   {
