@@ -6,10 +6,19 @@
 #include <future>
 #include <string>
 
+#ifdef __linux__
+
 #include "serial_communication/serial.hpp"
+using SerialInterface = terabee::serial_communication::Serial;
+
+#elif defined(__MINGW32__) || defined(__MINGW64__) || defined(_WIN32) || defined(_WIN64)
+
+#include "serial_communication/serial_windows.hpp"
+using SerialInterface = terabee::serial_communication::SerialWindows;
+
+#endif
 
 using terabee::serial_communication::ISerial;
-using terabee::serial_communication::Serial;
 
 /*
  * Linux null modem emulator is required to test some functionalities of
@@ -31,8 +40,8 @@ protected:
     device0Filename_("/dev/tnt0"),
     device1Filename_("/dev/tnt1")
   {
-    sut0_.reset(new Serial(device0Filename_));
-    sut1_.reset(new Serial(device1Filename_));
+    sut0_.reset(new SerialInterface(device0Filename_));
+    sut1_.reset(new SerialInterface(device1Filename_));
   }
   void SetUp() override
   {
@@ -64,7 +73,7 @@ TEST_F(SerialFixture, returnFalseIfOpenedOrClosedTwice)
 
 TEST_F(SerialFixture, returnFalseWhenFailToOpenDevice)
 {
-  sut0_.reset(new Serial("garbage device"));
+  sut0_.reset(new SerialInterface("garbage device"));
   ASSERT_FALSE(sut0_->open());
 }
 

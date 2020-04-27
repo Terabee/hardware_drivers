@@ -4,7 +4,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -O -g -pthread")
 set(PACKAGE_VERSION 1.0.0)
 project(hardware_drivers VERSION ${PACKAGE_VERSION})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build/bin)
 option(BUILD_TESTS "Builds tests" ON)
 option(BUILD_EXAMPLES "Build short example binaries" ON)
 
